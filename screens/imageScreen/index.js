@@ -14,10 +14,12 @@ const ImageScreen= (props) => {
   const [offSet, setOffset]= useState(0)
   const [dataSource, setDataSource] = useState(imageList);
 
+  //for rendering list on the screen
   useEffect(() => {
     props.actions.getImageList(offSet);
   }, []);
 
+  // getting images from api
   const getImages = () => {
     console.log('offset', offSet)
     setOffset(offSet + 1)
@@ -26,10 +28,7 @@ const ImageScreen= (props) => {
     setDataSource([...dataSource, ...imageList]);
   }
 
-
-
-
-
+  //rendering footer view for flatlist
   const renderFooter = () => {
     return (
       //Footer View with Load More button
@@ -51,6 +50,7 @@ const ImageScreen= (props) => {
     );
   };
 
+  // separator view between two items of list
   const ItemSeparatorView = () => {
     return (
       // Flat List Item Separator
@@ -64,6 +64,7 @@ const ImageScreen= (props) => {
     );
   };
 
+  // function to render the image list ui
   const renderImages= (item)=> {
     return (
       <TouchableOpacity style={{padding: 10}}
@@ -74,6 +75,7 @@ const ImageScreen= (props) => {
     )
   }
 
+  // rendering images
   const renderImageScreen = () => {
     return(
       <View styles={styles.container}>
